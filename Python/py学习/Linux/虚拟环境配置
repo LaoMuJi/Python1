@@ -30,5 +30,5 @@ pip uninstall virtualenv # 卸载virtualenv
 
 
 
-
+安装不成功安装
 sudo apt install python3-dev

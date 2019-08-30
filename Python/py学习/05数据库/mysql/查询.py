@@ -3,11 +3,11 @@ import pymysql
 
 def main():
     # 创建connect连接
-    conn = pymysql.connect(host='localhost', port=3306, user='root', password='mysql数据库', database='数据库名')
+    conn = pymysql.connect(host='10.0.0.8', port=3306, user='liu', password='mysql', database='data01')
     # 获得cursor对象
     cursor = conn.cursor()
     # 执行select语句，并返回
-    count = cursor.execute('select * from 表')
+    count = cursor.execute('select * from bookinfo')
     # 打印，返回的是行数
     print(count)
 
