@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from flask_script import Manager
+from flask_migrate import MigrateCommand, Migrate
 
 
 app = Flask(__name__)
@@ -12,7 +14,7 @@ app = Flask(__name__)
 
 class Config(object):
     # sqlalchemy的配置参数
-    SQLALCHEMY_DATABASE_URI = "mysql://liu:mysql@10.0.0.8:3306/data01"
+    SQLALCHEMY_DATABASE_URI = "mysql://root:mysql@127.0.0.1:3306/author_book_py04"
 
     # 设置sqlalchemy自动更跟踪数据库
     SQLALCHEMY_TRACK_MODIFICATIONS = True
@@ -24,6 +26,15 @@ app.config.from_object(Config)
 
 db = SQLAlchemy(app)
 
+# 创建启动命令管理对象
+manager = Manager(app)
+
+# 创建数据库迁移工具对象
+Migrate(app, db)
+
+# 向启动命令管理对象中添加迁移命令
+manager.add_command("db", MigrateCommand)
+
 
 # 定义数据库的模型
 class Author(db.Model):
@@ -33,6 +44,7 @@ class Author(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), unique=True)
     books = db.relationship("Book", backref="author")
+    email = db.Column(db.String(128), unique=True)
 
 
 class Book(db.Model):
@@ -41,6 +53,7 @@ class Book(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
+    leader = db.Column(db.String(32))
     author_id = db.Column(db.Integer, db.ForeignKey("tbl_authors.id"))
 
 
@@ -128,8 +141,9 @@ if __name__ == '__main__':
     # bk_san = Book(name='冰火魔厨', author_id=au_san.id)
     # db.session.add_all([bk_xi, bk_xi2, bk_qian, bk_san])
     # db.session.commit()
-    app.run(debug=True)
+    # app.run(debug=True)
 
+    manager.run()
 
 
 
