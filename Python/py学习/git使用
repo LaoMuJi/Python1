@@ -1,0 +1,58 @@
+1.创建
+    创建文件夹
+    cd到目录
+    git init 初始化
+    git add XXX 添加进git
+    git rm XXX 删除
+    git commit -m '说明' 提交设置版本号，说明
+
+
+
+2.修改
+    git reset --hard HEAD~1 退回1个版本，1代表几次
+    git reset --hard '说明' 退回任意版本，版本号
+    git reset --hard 8A4C5373 退回任意版本，编号是版本
+
+    git reset HEAD 文件 丢弃暂存区的文件改动
+    git checkout -- 文件 丢弃某文件的工作区改动
+
+
+
+
+3.查看
+    git log 查看log
+    git log --pretty=oneline 显示一行
+    git reflog 查看全部操作记录
+    git status 查看当前工作区还有什么没提交
+
+    git diff HEAD -- 文件 对比工作区和版本的区别
+    git diff HEAD HEAD~1 -- 文件 对比版本和上个版本的区别
+
+
+
+4.分支
+    git branch 查看分支
+    git checkout master 切换master分支
+    git checkout -b X 创建新的X分支并切换
+    git merge X 合并，在当前合并X分支
+    git merge --no-ff -m X '说明' 合并，在当前合并X分支并提交
+    git branch -d X 删除X分支
+    git log --graph --pretty=oneline 查看分支线
+
+    git stash 保存工作现场
+    git stash list 显示保存的工作现场
+    git stash pop 还原保存的工作现场
+
+
+
+
+5.github
+    ssh-keygen -t rsa -C '992519078@qq.com'
+    C:\Users\lcc92\.ssh id_rsa.pub 添加github
+    git clone 地址 克隆项目
+    git push origin 分支名称 推送本地分支到远程
+    git pull origin 分支名称 拉取远程分支到本地
+    
+    git branch --set-upstream-to=origin/smart1 smart2 1是远程，2是本地，让本地的跟踪远程的
+    git push 直接推送
+

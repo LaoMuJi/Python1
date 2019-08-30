@@ -1,0 +1,77 @@
+# 修改Ubuntu成阿里源
+
+sudo apt install vim
+
+sudo vim /etc/apt/sources.list
+
+输入 ggdG（vim操作指令）
+
+填写
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ trusty main universe restricted multiverse
+
+:w 保存
+:q 退出
+
+sudo apt-get update
+
+
+
+# 安装工具
+
+sh pycharm.sh
+
+sudo vi /etc/hosts
+0.0.0.0 account.jetbrains.com
+
+## 卸载
+
+sudo apt --purge remove mysql-server
+
+sqllite3 安装工具
+sudo apt install sqliteman
+
+
+
+# 文件管理
+
+文件管理显示隐藏文件
+ctrl + H
+
+应用全装到
+/usr/local
+/usr/share/applications
+
+安装tar命令
+tar -zxvf 文件名.tar.gz
+
+
+# 命令
+
+ls 显示文件 -a 包括隐藏
+cp 复制 -i 提示 -r 递归
+rm 删除 -i 提示 -r 递归
+mv 移动 -f 强制 -i 提示
+mkdir 创建目录
+rmdir 删除目录
+
+chmod 0755 file 更改文件权限 -r 递归
+
+ifconfig 查看网络
+
+ps 显示进程
+top 动态实时视图进程
+htop 动态实时视图进程 高级 sudo apt install htop
+
+ps -ef |grep mysql 查看mysql的进程端口
+sudo netstat -tlnp | grep redis 查看redis的端口
+ps aux | grep redis 查看redis

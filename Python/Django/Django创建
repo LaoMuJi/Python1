@@ -1,0 +1,104 @@
+创建虚拟环境
+pip install virtualenv
+pip install virtualenvwrapper
+
+pip install django==1.8.2
+
+sqllite3 查看工具，sudo apt install sqliteman
+
+
+
+
+
+
+
+1.创建django项目
+E:\Python\Django>django-admin startproject test1
+地址 django 开始项目 项目名称test1
+
+
+    2.创建应用
+    E:\Python\Django\test1>python manage.py startapp booktest
+    booktest 应用名称
+
+
+建立应用和项目联系，注册应用
+修改settings.py中的INSTALLED_APPS配置项，加入应用目录名booktest #33行
+
+
+后台管理
+settings.py
+
+
+
+修改语言 # 89
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/shanghai'
+
+
+
+修改数据库 # 78行 数据库必须先手动创建
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'data01',
+        'USER': 'liu',
+        'PASSWORD': 'mysql',
+        'HOST': '192.168.222.128',
+        'PORT': 3306,
+    }
+}
+__init__.py里面加入
+import pymysql
+pymysql.install_as_MySQLdb()
+
+
+
+
+
+
+    创建一个类，继承models.Model，定义字符串日期等，然后生成迁移文件
+
+    生成迁移文件
+    E:\Python\Django\test1>python manage.py makemigrations
+
+
+    执行迁移生成表
+    E:\Python\Django\test1>python manage.py migrate
+
+
+
+
+
+创建管理员
+py manage.py createsuperuser
+
+注册模型
+admin.py添加
+    from .models import 类名
+    admin.site.register(类名)
+
+
+
+
+！添加模板参数html建立templast文件夹，修改settings.py # 59行 templast文件夹名称
+'DIRS': [os.path.join(BASE_DIR, 'templast')],
+
+
+
+
+
+
+urls添加路由参数
+url(r'^', include('booktest.urls')),
+
+然后再应用名称里面添加urls.py
+
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^index$', views.index),
+]
+
+

@@ -1,0 +1,29 @@
+安装
+sudo apt install mysql-server
+    sudo apt install mysql-client
+    sudo apt install libmysqlclient-dev
+
+
+检查mysql服务状态
+systemctl status mysql.service
+
+
+查看mysql是否运行
+service mysql status
+
+
+查看端口号
+show global variables like 'port';
+
+
+登录
+sudo mysql -uroot -p
+没密码直接两下回车
+
+
+mysql记录log
+    sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf +68
+68、69行去除注释保存，重启mysql
+    sudo service mysql restart
+        查看实时mysql日志
+        sudo tail -f /var/log/mysql/mysql.log

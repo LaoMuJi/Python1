@@ -1,0 +1,22 @@
+修改绑定
+sudo vi /etc/redis/redis.conf
+bind 127.0.0.1 192.168.
+
+
+启动服务
+sudo service redis restart
+
+
+配置从
+sudo cp etc/redis/redis.conf etc/redis/slave.conf
+sudo vi etc/redis/slave.conf
+
+编辑
+bind 127.0.0.1 192.168.
+slaveof 主服务器IP 端口
+修改从端口
+port 6378
+
+
+启动从
+sudo redis-server slave.conf

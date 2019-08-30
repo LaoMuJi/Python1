@@ -1,0 +1,140 @@
+sudo apt install redis
+
+sudo vi /etc/redis/redis.conf 配置文件
+
+启动停止
+sudo service redis start
+sudo service redis stop
+sudo service redis restart
+
+
+连接数据库
+redis-cli
+redis-cli -h 10.0.0.10 -p 6379
+
+选择1号数据库，默认0-15 一共16个
+select 0
+
+查看数据库
+keys *
+
+
+http://doc.redisfans.com/index.html
+
+
+str操作
+
+    设置kv
+    set k v
+
+    查看k
+    get k
+
+    同时设置 k1v1 k2v2
+    mset k1 v1 k2 v2
+
+    同时获取 k1 k2
+    mget k1 k2
+
+    k里面追加v+
+    append k v+
+
+    判断k存在 存在1 不存在0
+    exists k
+
+    查看k的类型
+    type k
+
+    删除k
+    del k1 k2
+
+    设置kv过期时间3秒
+    setex k 3 v
+
+    设置k过期时间3秒
+    expire k 3
+
+    查看k还剩过期时间秒
+    ttl k
+
+
+
+hash 哈希操作
+
+    设置k(键)的属性a 值为b
+    hset k a b
+
+    设置k(键)的属性1 值1，属性2 值为b2
+    hmset k 属性1 值1 属性2 值2
+
+    查看k里面有几个属性
+    hkeys k
+
+    查看k里面属性的值
+    hget k 属性
+
+    查看k里面多个属性的值
+    hmget k 属性1 属性2
+
+    获取所有属性值
+    hvals k
+
+    删除k里面属性1
+    hdel k 属性1
+
+
+
+list 列表操作
+
+    查看列表0是开始位置 9结束位置 -1是查看全部
+    lrange k 0 9
+
+    从左侧插入数据 从头往左写 打印是321
+    lpush k 1 2 3
+
+    从右侧插入数据 从尾往右写 打印是456
+    rpush k 4 5 6
+
+    在v前面加入7 after是在v后面加入
+    linsert k before(after) v 7
+
+    修改索引1位置的值为v
+    lset k 1 v
+
+    删除k列表中2个v，2如果大于0从头往尾删除，小于0从尾往头删除，等于0删除所有，
+    lrem k 2 v
+
+
+
+set 操作，无序集合
+
+    设置k值v1v2
+    sadd k v1 v2 v3
+
+    查看k所有元素
+    smembers k
+
+    删除k里面v1v2
+    srem k v1 v2
+
+
+
+zset 有序集合，每个元素都有权重值，权重从小到大排序
+
+    设置 打印 v1 v2 v3
+    zadd k 3 v3 1 v1 2 v2 4 v4
+
+    查看v
+    zrange k 0 -1
+
+    查看权重值，包括2 3
+    zrangebyscore k 2 3
+
+    查看v的权重值
+    zscore k v3
+
+    删除v1 v2
+    zrem k v1 v2
+
+    删除权重几到几范围的 ，包括数字
+    zremrangebyscore k 3 4
