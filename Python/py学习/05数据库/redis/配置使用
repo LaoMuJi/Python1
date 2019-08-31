@@ -10,7 +10,7 @@ sudo service redis restart
 
 连接数据库
 redis-cli
-redis-cli -h 10.0.0.10 -p 6379
+redis-cli -h 10.0.0.8 -p 6379
 
 选择1号数据库，默认0-15 一共16个
 select 0

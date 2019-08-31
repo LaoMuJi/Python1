@@ -27,6 +27,10 @@ grant select on 表.* to 'liu'@'localhost' identified by '123456';
 -- 全部权限all privileges
 -- 本地localhost 远程%
 
+修改权限
+grant all privileges on *.* to 'liu'@'%';
+
+
 修改密码
     update mysql.user set authentication_string=password('新密码') where user='用户名';
 update mysql.user set authentication_string=password('新密码') where user='root' and Host ='localhost';

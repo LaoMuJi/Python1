@@ -32,3 +32,19 @@ pip uninstall virtualenv # 卸载virtualenv
 
 安装不成功安装
 sudo apt install python3-dev
+
+
+
+
+
+windows
+
+pip install virtualenvwrapper-win # 安装虚拟环境
+
+mkvirtualenv XXXX # 创建XXXX名称环境，路径C:\Users\lcc92\Envs下
+
+workon XXXX # 进入XXXX
+
+deactivate # 退出
+
+rmvirtualenv XXXX 删除
