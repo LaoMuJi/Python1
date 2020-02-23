@@ -13,7 +13,7 @@ class X(object):
         self.a = 1
         print(self.a, self.num)
 
-    # args是元祖，多余的参数会传入，变成元祖
+    # args是元祖，多余的参数会传入，变成元祖，可传可不传
     # kwargs是字典、a=1会传入
     def abc(self, *args, **kwargs):
         print(args)

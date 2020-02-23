@@ -4,7 +4,7 @@ import redis
 
 if __name__ == '__main__':
 
-    sr = redis.StrictRedis(host='10.0.0.8',port=6379, db=0)
+    sr = redis.StrictRedis(host='10.0.0.4',port=6379, db=0)
     # sr = redis.StrictRedis() # 默认127.0.0.1
 
     # 创建修改

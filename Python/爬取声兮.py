@@ -48,6 +48,7 @@ def b(token):
             a = rsp.content.decode("UTF-8-sig")
             # print(a)
             b = json.loads(a)
+            # print(b)
             c = b['data']
             # 循环json
             for d in c:

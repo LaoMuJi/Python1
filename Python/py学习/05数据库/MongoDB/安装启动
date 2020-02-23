@@ -1,0 +1,58 @@
+sudo apt install mongodb
+
+启动停止重启
+sudo service mongod ****
+
+进入mongo
+mongo
+
+显示数据库
+show dbs
+
+使用数据库，没有就创建
+use ***
+
+删除数据库
+db.dropDatabase()
+
+
+插入数据 _id存在会报错
+db.名字.insert({name:'lc',gender:1})
+db.名字.insert({name:'lc',gender:1})
+
+
+查找
+db.名字.find()
+db.名字.find({age:18}).prett() # prett美化
+
+
+
+保存，_id存在会更新
+db.名字.save({_id:1,name:'lc',gender:1})
+
+
+更新
+db.名字.updata({name:'lc'},{name:'ll'}) # 满足name：lc的全部，替换成ll，附加的数据没了
+db.名字.updata({name:'lc'},{$set:{name:'ll'}}) # 替换一条，附加的数据不变
+db.名字.updata({name:'lc'},{$set:{name:'ll'}},{multi:true}) # 替换多条，附加的数据不变
+
+
+删除
+db.名字.remove({name:'lc'},{justOne:true}) # 删除一条
+
+
+
+比较运算符
+db.名字.find({age:{$lte:18}})  # age 小于等于18
+db.名字.find({age:{$in:18,20,22}})  # age 是18,20,22
+
+小于: $lt
+小于等于: $lte
+大于: $gt
+大于等于: $gte
+不等于: $ne
+
+
+逻辑运算符
+db.名字.find({$or:[{age:18},{city:'南京'}]})  # age是18 或 city南京
+db.名字.find({$or:[{age:{$get:18}},{city:{$in:['南京','北京']}}]})  # age大于等于18 或 city南京

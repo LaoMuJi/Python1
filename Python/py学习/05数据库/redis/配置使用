@@ -18,6 +18,8 @@ select 0
 查看数据库
 keys *
 
+删除数据库里面所有数据
+flushall
 
 http://doc.redisfans.com/index.html
 

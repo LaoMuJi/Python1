@@ -6,3 +6,12 @@ export FLASK_RUN_PORT=8000 设置端口
 
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient
 win mysqlclient‑1.4.4‑cp37‑cp37m‑win32.whl
+
+
+
+初始化
+python manage.py db init
+初始化数据库
+python manage.py db migrate
+建立数据库
+python manage.py db upgrade
